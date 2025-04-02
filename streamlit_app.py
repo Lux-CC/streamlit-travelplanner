@@ -2,7 +2,6 @@ from password import check_password
 import streamlit as st
 from menu import homepage_menu
 
-st.write("helloo")
 
 if not check_password():
     st.sidebar.empty()
