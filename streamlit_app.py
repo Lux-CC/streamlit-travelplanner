@@ -4,6 +4,7 @@ from menu import homepage_menu
 
 
 if not check_password():
+    st.write("helloo")
     st.sidebar.empty()
     st.stop()  # Do not continue if check_password is not True.
 
