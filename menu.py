@@ -17,6 +17,7 @@ def authenticated_menu():
 def unauthenticated_menu():
     # Show a navigation menu for unauthenticated users
     st.sidebar.page_link("streamlit_app.py", label="Log in!")
+    st.write("hellooo")
 
 
 def homepage_menu():
