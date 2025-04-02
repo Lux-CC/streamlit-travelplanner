@@ -1,8 +1,6 @@
 import hmac
 import streamlit as st
 
-st.write("helloo")
-
 def check_password():
     """Returns `True` if the user had the correct password."""
 
