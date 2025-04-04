@@ -1,6 +1,21 @@
 from password import check_password
 import streamlit as st
 from menu import homepage_menu
+from streamlit_cookies_controller import CookieController
+
+controller = CookieController()
+
+# Set a cookie
+controller.set('User', 'Luuk')
+st.write(st.session_state)
+
+# Get all cookies
+cookies = controller.getAll()
+st.write(cookies)
+
+# Get a cookie
+cookie = controller.get('User')
+st.write(cookie)
 
 
 if not check_password():
