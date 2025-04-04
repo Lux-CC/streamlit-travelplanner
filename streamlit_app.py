@@ -6,7 +6,6 @@ from streamlit_cookies_controller import CookieController
 controller = CookieController()
 
 # Set a cookie
-controller.set('User', 'Luuk')
 st.write(st.session_state)
 
 # Get all cookies
