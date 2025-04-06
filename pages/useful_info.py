@@ -1,6 +1,10 @@
 import streamlit as st
 import pydeck as pdk
 import pandas as pd
+from menu import menu_with_redirect
+
+
+menu_with_redirect()
 
 # Sample polygon data (lat/lon) for a few Tokyo districts (simplified outlines)
 districts = pd.DataFrame({
