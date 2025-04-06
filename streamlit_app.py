@@ -17,6 +17,7 @@ st.session_state._role = st.session_state.role
 
 homepage_menu() # Render the dynamic homepage menu!
 
+st.write('hello')
 # add a logout button
 if st.button("Logout"):
     controller.delete("PasswordHash")
