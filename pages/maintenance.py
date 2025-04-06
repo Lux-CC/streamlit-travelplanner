@@ -81,16 +81,16 @@ if place:
             data=geojson_data,
             pickable=True,
             stroked=True,
-            filled=True,
-            get_fill_color='[200, 100, 150, 60]',
-            get_line_color='[100, 100, 100]',
-            line_width_min_pixels=1
+            filled=False,  # Remove fill to focus on boundary
+            get_line_color='[255, 0, 0, 255]',  # Bright red outline
+            line_width_min_pixels=3  # Thicker lines
         )
 
         st.pydeck_chart(pdk.Deck(
+            map_style="mapbox://styles/mapbox/light-v10",  # Brighter background
             layers=[layer],
             initial_view_state=view_state,
-            tooltip={"html": "<b>{name}</b>", "style": {"color": "white"}}
+            tooltip={"html": "<b>{name}</b>", "style": {"color": "black"}}
         ))
 
     else:
