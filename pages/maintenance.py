@@ -10,9 +10,10 @@ def fetch_osm_boundary(place_name: str):
     overpass_url = "https://overpass-api.de/api/interpreter"
     query = f"""
     [out:json];
-    relation["name"="{place_name}"]["type"="boundary"]["boundary"="administrative"];
+    relation["name:en"="{place_name}"]["boundary"="administrative"];
     out geom;
     """
+
     response = requests.post(overpass_url, data={"data": query})
     data = response.json()
 
