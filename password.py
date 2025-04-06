@@ -26,7 +26,7 @@ def check_password():
             st.session_state["password_correct"] = True
             encryption_key = st.secrets["encryption_key"]
             encrypted_password = hmac.new(encryption_key.encode(), st.session_state["password"].encode(), digestmod="sha256").hexdigest()
-            controller.set("PasswordHash", encrypted_password)
+            controller.set("PasswordHash", encrypted_password, path='/', domain="world-travelplanner.streamlit.app")
             del st.session_state["password"]  # Don't store the password.
         else:
             st.session_state["password_correct"] = False
