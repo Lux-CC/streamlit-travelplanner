@@ -1,5 +1,6 @@
 import streamlit as st
 import pandas as pd
+import pydeck as pdk
 from menu import menu_with_redirect
 
 # Redirect to streamlit_app.py if not logged in, otherwise show the navigation menu
@@ -27,6 +28,13 @@ tokyo_locations = pd.DataFrame({
         139.7967,  # Senso-ji Temple
         139.7006,  # Shinjuku Station
         139.6993   # Meiji Shrine
+    ],
+    'description': [
+        "The world's busiest pedestrian crossing, with up to 3,000 people crossing at once.",
+        "A 333-meter-tall communications and observation tower, inspired by the Eiffel Tower.",
+        "Tokyo's oldest Buddhist temple, founded in 645 AD.",
+        "The world's busiest railway station, serving millions of passengers daily.",
+        "A Shinto shrine dedicated to Emperor Meiji and Empress Shoken."
     ]
 })
 
@@ -38,28 +46,43 @@ st.write("Explore some of Tokyo's most famous landmarks")
 st.subheader("Famous Landmarks")
 st.dataframe(tokyo_locations[['name', 'lat', 'lon']], hide_index=True)
 
-# Create the map with the locations
+# Create the interactive map using Pydeck
 st.subheader("Map View")
-my_map = st.map(
+
+layer = pdk.Layer(
+    "ScatterplotLayer",
     data=tokyo_locations,
-    latitude='lat',
-    longitude='lon',
-    size=20,
-    zoom=11,
-    use_container_width=True
+    pickable=True,
+    get_position='[lon, lat]',
+    get_radius=100,
+    get_fill_color='[255, 100, 100, 160]',
 )
 
-# Add some additional information about the locations
+tooltip = {
+    "html": "<b>{name}</b><br/>{description}",
+    "style": {
+        "backgroundColor": "black",
+        "color": "white",
+        "padding": "10px"
+    }
+}
+
+view_state = pdk.ViewState(
+    latitude=tokyo_locations['lat'].mean(),
+    longitude=tokyo_locations['lon'].mean(),
+    zoom=11,
+    pitch=0
+)
+
+st.pydeck_chart(pdk.Deck(
+    layers=[layer],
+    initial_view_state=view_state,
+    tooltip=tooltip,
+    map_style='mapbox://styles/mapbox/light-v9'
+))
+
+# Add additional information about the locations
 st.subheader("About These Locations")
-for name in tokyo_locations['name']:
-    with st.expander(name):
-        if name == "Shibuya Crossing":
-            st.write("The world's busiest pedestrian crossing, with up to 3,000 people crossing at once.")
-        elif name == "Tokyo Tower":
-            st.write("A 333-meter-tall communications and observation tower, inspired by the Eiffel Tower.")
-        elif name == "Senso-ji Temple":
-            st.write("Tokyo's oldest Buddhist temple, founded in 645 AD.")
-        elif name == "Shinjuku Station":
-            st.write("The world's busiest railway station, serving millions of passengers daily.")
-        elif name == "Meiji Shrine":
-            st.write("A Shinto shrine dedicated to Emperor Meiji and Empress Shoken.")
+for i, row in tokyo_locations.iterrows():
+    with st.expander(row['name']):
+        st.write(row['description'])
