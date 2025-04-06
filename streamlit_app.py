@@ -5,18 +5,6 @@ from streamlit_cookies_controller import CookieController
 
 controller = CookieController()
 
-# Set a cookie
-st.write(st.session_state)
-
-# Get all cookies
-cookies = controller.getAll()
-st.write(cookies)
-
-# Get a cookie
-cookie = controller.get('User')
-st.write(cookie)
-
-
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.
 
