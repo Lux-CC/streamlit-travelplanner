@@ -16,3 +16,9 @@ if "role" not in st.session_state:
 st.session_state._role = st.session_state.role
 
 homepage_menu() # Render the dynamic homepage menu!
+
+# add a logout button
+if st.button("Logout"):
+    controller.delete("PasswordHash")
+    st.session_state.role = None
+    st.rerun()
