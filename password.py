@@ -8,7 +8,7 @@ controller = CookieController()
 def check_password():
     """Returns `True` if the user had the correct password."""
     def check_cookie():
-        controller.getAll()
+        controller.getAll() # might be redundant
         if controller.get("PasswordHash") is None:
             pass
         else:
