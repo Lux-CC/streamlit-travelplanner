@@ -9,42 +9,51 @@ menu_with_redirect()
 def fetch_osm_boundary(place_name: str):
     overpass_url = "https://overpass-api.de/api/interpreter"
     query = f"""
-    [out:json];
+    [out:json][timeout:25];
     relation["name:en"="{place_name}"]["boundary"="administrative"];
+    out body;
+    >;
     out geom;
     """
 
     response = requests.post(overpass_url, data={"data": query})
+    response.raise_for_status()
     data = response.json()
 
-    # Convert Overpass data to a basic GeoJSON FeatureCollection
-    features = []
+    # Separate all ways with geometry
+    ways_by_id = {}
+    for element in data["elements"]:
+        if element["type"] == "way" and "geometry" in element:
+            ways_by_id[element["id"]] = element["geometry"]
+
+    # Look for the boundary relation
     for rel in data["elements"]:
-        if rel["type"] != "relation" or "members" not in rel:
-            continue
+        if rel["type"] == "relation" and rel.get("tags", {}).get("boundary") == "administrative":
+            coords = []
 
-        coords = []
-        for member in rel["members"]:
-            if member["type"] == "way" and "geometry" in member:
-                coords.append([[pt["lon"], pt["lat"]] for pt in member["geometry"]])
+            for member in rel.get("members", []):
+                if member["type"] == "way" and member.get("role") == "outer":
+                    way_geometry = ways_by_id.get(member["ref"])
+                    if way_geometry:
+                        coords.append([[pt["lon"], pt["lat"]] for pt in way_geometry])
 
-        # Flatten to one outer ring (simple approximation)
-        if coords:
-            features.append({
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": coords[0:1]  # use first outer ring
-                },
-                "properties": {
-                    "name": rel.get("tags", {}).get("name", "Unknown")
+            if coords:
+                return {
+                    "type": "FeatureCollection",
+                    "features": [{
+                        "type": "Feature",
+                        "geometry": {
+                            "type": "Polygon",
+                            "coordinates": coords  # multiple outer rings if available
+                        },
+                        "properties": {
+                            "name": rel.get("tags", {}).get("name", "Unknown")
+                        }
+                    }]
                 }
-            })
 
-    return {
-        "type": "FeatureCollection",
-        "features": features
-    } if features else None
+    return None
+
 
 # UI: search input
 st.title("🗾 Draw Tokyo District Boundaries")
