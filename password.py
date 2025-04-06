@@ -3,7 +3,7 @@ import streamlit as st
 from streamlit_cookies_controller import CookieController
 import config_vars
 
-controller = CookieController()
+controller = CookieController('pwd')
 
 def check_password():
     """Returns `True` if the user had the correct password."""

@@ -3,7 +3,7 @@ import streamlit as st
 from menu import homepage_menu
 from streamlit_cookies_controller import CookieController
 
-controller = CookieController()
+controller = CookieController('homepage')
 
 if not check_password():
     st.stop()  # Do not continue if check_password is not True.

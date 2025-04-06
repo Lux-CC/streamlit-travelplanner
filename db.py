@@ -1,9 +1,9 @@
 import streamlit as st
-from streamlit_cookies_controller import CookieController
+from streamlit_cookies_controller import CookieController, 
 import config_vars
 
 
-controller = CookieController()
+controller = CookieController('db')
 
 
 def update_app_data(key: str, object):
