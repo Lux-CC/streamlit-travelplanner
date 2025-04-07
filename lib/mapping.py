@@ -7,8 +7,12 @@ def fetch_location_point(place_name: str) -> Optional[Dict]:
     overpass_url = "https://overpass-api.de/api/interpreter"
     query = f"""
     [out:json][timeout:25];
-    area[name:en="{place_name}"][admin_level~"[1-8]"];
-    out center;
+    (
+      node["name"="{place_name}"]["place"~"city|town|village"];
+      way["name"="{place_name}"]["place"~"city|town|village"];
+      relation["name"="{place_name}"]["place"~"city|town|village"];
+    );
+    out center 1;
     """
 
     try:
@@ -16,14 +20,23 @@ def fetch_location_point(place_name: str) -> Optional[Dict]:
         response.raise_for_status()
         data = response.json()
 
-        if data["elements"]:
-            element = data["elements"][0]
-            return {
-                "name": place_name,
-                "lat": element.get("center", {}).get("lat"),
-                "lon": element.get("center", {}).get("lon")
-            }
-    except Exception:
+        for element in data["elements"]:
+            # Try node lat/lon directly
+            if element["type"] == "node":
+                return {
+                    "name": place_name,
+                    "lat": element.get("lat"),
+                    "lon": element.get("lon"),
+                }
+            # For way/relation, get center
+            elif "center" in element:
+                return {
+                    "name": place_name,
+                    "lat": element["center"]["lat"],
+                    "lon": element["center"]["lon"],
+                }
+    except Exception as e:
+        print(f"Error fetching {place_name}: {e}")
         return None
 
     return None
