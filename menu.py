@@ -4,12 +4,12 @@ def authenticated_menu():
     # Show a navigation menu for authenticated users
     st.sidebar.page_link("streamlit_app.py", label="Home")
     if st.session_state.role in ["authenticated-user"]:
-        st.sidebar.page_link("pages/useful_info.py", label="Total trip overview")
-        st.sidebar.page_link("pages/backup_stuff.py", label="Per country view")
-        st.sidebar.page_link("pages/backup_stuff.py", label="Per country view")
+        st.sidebar.page_link("pages/useful_info.py", label="World view")
+        st.sidebar.page_link("pages/backup_stuff.py", label="unknown view")
+        st.sidebar.page_link("pages/backup_stuff.py", label="City view")
         st.sidebar.page_link(
-            "pages/maintenance.py",
-            label="Maintenance",
+            "pages/city_planning.py",
+            label="City Planning",
             # disabled=st.session_state.role != "authenticated-user", # optinally add disabled menu items for certain roles
         )
 
