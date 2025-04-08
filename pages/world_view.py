@@ -1,7 +1,10 @@
 import streamlit as st
 import pydeck as pdk
+from lib.langchain import extract_recommendations_from_text
+from lib.langchain import fix_or_complete_location_data
 from menu import menu_with_redirect
 from lib.mapping import fetch_multiple_points
+import json
 
 
 def create_point_layer(locations):
@@ -46,7 +49,7 @@ def calculate_view_bounds(locations):
     )
 
 
-def render_map(locations):
+def render_map(locations, placeholder_obj):
     """Render the map with all locations."""
     if not locations:
         return
@@ -54,7 +57,7 @@ def render_map(locations):
     view_state = calculate_view_bounds(locations)
     layer = create_point_layer(locations)
 
-    st.pydeck_chart(
+    placeholder_obj.pydeck_chart(
         pdk.Deck(
             map_style="mapbox://styles/mapbox/light-v10",
             initial_view_state=view_state,
@@ -69,23 +72,27 @@ def render_map(locations):
 
 def process_location_input(location_input: str) -> None:
     """Process the location input and display the map with found locations."""
-    locations_list = [loc.strip() for loc in location_input.split("\n") if loc.strip()]
 
-    if not locations_list:
+    if not location_input:
         return
 
+    map_placeholder = st.empty()
+
+    st.subheader("Refine locations...")
+
     with st.spinner("Finding locations..."):
-        locations = fetch_multiple_points(locations_list)
+        locations, found_places, not_found_places = fetch_multiple_points(
+            location_input
+        )
 
         if locations:
-            render_map(locations)
+            render_map(locations, map_placeholder)
 
-            # Display locations found/not found
-            found_places = {loc["name"] for loc in locations}
-            not_found = set(locations_list) - found_places
-
-            if not_found:
-                st.warning("Could not find these locations: " + ", ".join(not_found))
+            if not_found_places:
+                st.warning(
+                    "Could not find these locations: "
+                    + ", ".join([place["place"] for place in not_found_places])
+                )
         else:
             st.error("Could not find any of the specified locations.")
 
@@ -94,17 +101,44 @@ menu_with_redirect()
 
 st.title("🗺️ World View")
 
-default_locations = """Tokyo
-New York
-London
-Sydney"""
+default_locations = """You like diving, so Indonesia seems great. Also surfing is great in Bali. Avoid Java though!"""
 
-location_input = st.text_area(
-    "Enter cities or countries (one per line):",
+travel_input = st.text_area(
+    "Enter your travel plans",
     value=default_locations,
     height=150,
-    help="Enter one location per line",
+    help="Make sure it mentions cities and countries you want to visit",
 )
 
-if location_input:
-    process_location_input(location_input)
+if travel_input:
+    # recommendations = extract_recommendations_from_text(travel_input)
+    recommendations = json.loads(travel_input)
+    recommendations = [
+        {"index": i, **recommendation}
+        for i, recommendation in enumerate(recommendations)
+    ]
+    fixed_recommendations = []
+    for recommendation in recommendations:
+        fixed_location = fix_or_complete_location_data(recommendation["location"])
+        # add all fields of the recommendation but with fixed location
+        fixed_recommendations.append({**recommendation, "location": fixed_location})
+
+    with st.expander("Locations extracted from text"):
+        if recommendations:
+            st.dataframe(
+                recommendations,
+                hide_index=True,
+            )
+            st.dataframe(
+                fixed_recommendations,
+                hide_index=True,
+            )
+        else:
+            st.warning("No locations were extracted from the text.")
+
+    process_location_input(
+        [
+            {**recommendation["location"], "index": recommendation["index"]}
+            for recommendation in fixed_recommendations
+        ]
+    )

@@ -1,11 +1,14 @@
 import streamlit as st
 
+
 def authenticated_menu():
     # Show a navigation menu for authenticated users
     st.sidebar.page_link("streamlit_app.py", label="Home")
     if st.session_state.role in ["authenticated-user"]:
         st.sidebar.page_link("pages/world_view.py", label="World view")
-        st.sidebar.page_link("pages/backup_stuff.py", label="Unknown view")
+        st.sidebar.page_link("pages/test_geopage.py", label="Test geopage")
+        st.sidebar.page_link("pages/user_preferences.py", label="User preferences")
+        st.sidebar.page_link("pages/world_brainstorm.py", label="World brainstorm")
         st.sidebar.page_link(
             "pages/city_planning.py",
             label="City Planning",
@@ -16,7 +19,6 @@ def authenticated_menu():
 def unauthenticated_menu():
     # Show a navigation menu for unauthenticated users
     st.sidebar.page_link("streamlit_app.py", label="Log in!")
-    st.write("hellooo")
 
 
 def homepage_menu():
