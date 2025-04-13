@@ -1,27 +1,5 @@
 [
   {
-    "id": "north-bali",
-    "name": "North Bali",
-    "geo_query": "Lovina, Bali, Indonesia",
-    "country": "Indonesia",
-    "location_type": "region",
-    "category": "nature",
-    "metadata": {
-      "score": 0.85,
-      "status": "maybe"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Check if waterfalls are open in May"
-      },
-      {
-        "id": "a2",
-        "text": "Could be a chill nature alternative to Ubud"
-      }
-    ]
-  },
-  {
     "id": "banaue",
     "name": "Banaue Rice Terraces",
     "geo_query": "Banaue, Philippines",
@@ -72,6 +50,10 @@
       {
         "id": "a1",
         "text": "Sunset here was like a movie last time!!!!"
+      },
+      {
+        "id": "a2",
+        "text": "amaaing"
       }
     ]
   },
@@ -156,182 +138,6 @@
     ]
   },
   {
-    "id": "north-bali",
-    "name": "North Bali",
-    "geo_query": "Lovina, Bali, Indonesia",
-    "country": "Indonesia",
-    "location_type": "region",
-    "category": "nature",
-    "metadata": {
-      "score": 0.85,
-      "status": "maybe"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Check if waterfalls are open in May"
-      },
-      {
-        "id": "a2",
-        "text": "Could be a chill nature alternative to Ubud"
-      }
-    ]
-  },
-  {
-    "id": "siquijor",
-    "name": "Siquijor Island",
-    "geo_query": "Siquijor, Philippines",
-    "country": "Philippines",
-    "location_type": "region",
-    "category": "beach",
-    "metadata": {
-      "score": 0.9,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Chill island with waterfalls and snorkeling"
-      },
-      {
-        "id": "a2",
-        "text": "Can be reached via ferry from Dumaguete"
-      }
-    ]
-  },
-  {
-    "id": "bukidnon",
-    "name": "Bukidnon Highlands",
-    "geo_query": "Bukidnon, Mindanao, Philippines",
-    "country": "Philippines",
-    "location_type": "region",
-    "category": "hiking",
-    "metadata": {
-      "score": 0.75,
-      "status": "maybe"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Great hiking and nature, off-the-beaten path"
-      },
-      {
-        "id": "a2",
-        "text": "Check transport options \u2014 no self-driving"
-      }
-    ]
-  },
-  {
-    "id": "tanah-toraja",
-    "name": "Tanah Toraja",
-    "geo_query": "Rantepao, Sulawesi, Indonesia",
-    "country": "Indonesia",
-    "location_type": "region",
-    "category": "culture",
-    "metadata": {
-      "score": 0.8,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Unique funerary culture and landscape"
-      },
-      {
-        "id": "a2",
-        "text": "Can combine with hiking routes nearby"
-      }
-    ]
-  },
-  {
-    "id": "banaue",
-    "name": "Banaue Rice Terraces",
-    "geo_query": "Banaue, Ifugao, Philippines",
-    "country": "Philippines",
-    "location_type": "place",
-    "category": "hiking",
-    "metadata": {
-      "score": 0.88,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Multi-day hikes possible through villages"
-      },
-      {
-        "id": "a2",
-        "text": "Weather may be foggy in April"
-      }
-    ]
-  },
-  {
-    "id": "komodo",
-    "name": "Komodo National Park",
-    "geo_query": "Komodo, Indonesia",
-    "country": "Indonesia",
-    "location_type": "region",
-    "category": "nature",
-    "metadata": {
-      "score": 0.92,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Snorkeling, diving, and Komodo dragons"
-      },
-      {
-        "id": "a2",
-        "text": "Avoid weekends, can get crowded"
-      }
-    ]
-  },
-  {
-    "id": "bohol",
-    "name": "Bohol",
-    "geo_query": "Bohol, Philippines",
-    "country": "Philippines",
-    "location_type": "region",
-    "category": "nature",
-    "metadata": {
-      "score": 0.87,
-      "status": "maybe"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Chocolate Hills, tarsiers, and countryside cycling"
-      },
-      {
-        "id": "a2",
-        "text": "Tagbilaran is the transport hub"
-      }
-    ]
-  },
-  {
-    "id": "bukit-lawang",
-    "name": "Bukit Lawang",
-    "geo_query": "Bukit Lawang, Sumatra, Indonesia",
-    "country": "Indonesia",
-    "location_type": "place",
-    "category": "nature",
-    "metadata": {
-      "score": 0.86,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Jungle trekking to see orangutans"
-      },
-      {
-        "id": "a2",
-        "text": "Consider staying in a riverside homestay"
-      }
-    ]
-  },
-  {
     "id": "el-nido",
     "name": "El Nido",
     "geo_query": "El Nido, Palawan, Philippines",
@@ -349,29 +155,15 @@
       },
       {
         "id": "a2",
-        "text": "Can be crowded, consider nearby alternative beaches"
-      }
-    ]
-  },
-  {
-    "id": "ubud",
-    "name": "Ubud",
-    "geo_query": "Ubud, Bali, Indonesia",
-    "country": "Indonesia",
-    "location_type": "city",
-    "category": "culture",
-    "metadata": {
-      "score": 0.8,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Cultural hub with yoga, food, and art"
+        "text": "Can be crowded, consider nearby alternative beaches."
       },
       {
-        "id": "a2",
-        "text": "Base for exploring central Bali on foot or by bike"
+        "id": "a3",
+        "text": "Shitty weather though.."
+      },
+      {
+        "id": "a4",
+        "text": "or is it??"
       }
     ]
   },
@@ -464,28 +256,6 @@
     ]
   },
   {
-    "id": "banaue",
-    "name": "Banaue Rice Terraces",
-    "geo_query": "Banaue, Ifugao, Philippines",
-    "country": "Philippines",
-    "location_type": "place",
-    "category": "hiking",
-    "metadata": {
-      "score": 0.88,
-      "status": "included"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Multi-day hikes possible through villages"
-      },
-      {
-        "id": "a2",
-        "text": "Weather may be foggy in April"
-      }
-    ]
-  },
-  {
     "id": "komodo",
     "name": "Komodo National Park",
     "geo_query": "Komodo, Indonesia",
@@ -552,28 +322,6 @@
     ]
   },
   {
-    "id": "el-nido",
-    "name": "El Nido",
-    "geo_query": "El Nido, Palawan, Philippines",
-    "country": "Philippines",
-    "location_type": "city",
-    "category": "beach",
-    "metadata": {
-      "score": 0.78,
-      "status": "maybe"
-    },
-    "annotations": [
-      {
-        "id": "a1",
-        "text": "Popular for island hopping and beaches"
-      },
-      {
-        "id": "a2",
-        "text": "Can be crowded, consider nearby alternative beaches"
-      }
-    ]
-  },
-  {
     "id": "ubud",
     "name": "Ubud",
     "geo_query": "Ubud, Bali, Indonesia",
@@ -592,6 +340,58 @@
       {
         "id": "a2",
         "text": "Base for exploring central Bali on foot or by bike"
+      }
+    ]
+  },
+  {
+    "id": "banaue-terraces",
+    "name": "Banaue Rice Terraces",
+    "geo_query": "Banaue, Ifugao, Philippines",
+    "country": "Philippines",
+    "location_type": "region",
+    "category": "nature",
+    "metadata": {
+      "score": 0.88,
+      "status": "included"
+    },
+    "annotations": [
+      {
+        "id": "a1",
+        "text": "Visit Batad for the most stunning terrace views"
+      },
+      {
+        "id": "a2",
+        "text": "Stay in a homestay to experience Ifugao culture"
+      },
+      {
+        "id": "a3",
+        "text": "Best season is April\u2013June or Sept\u2013Oct for green fields"
+      }
+    ]
+  },
+  {
+    "id": "bacuit-archipelago",
+    "name": "Bacuit Archipelago",
+    "geo_query": "El Nido, Palawan, Philippines",
+    "country": "Philippines",
+    "location_type": "region",
+    "category": "beach",
+    "metadata": {
+      "score": 0.93,
+      "status": "included"
+    },
+    "annotations": [
+      {
+        "id": "a1",
+        "text": "Tour A and C are the most popular island hopping routes"
+      },
+      {
+        "id": "a2",
+        "text": "Look into a private boat tour for more flexibility"
+      },
+      {
+        "id": "a3",
+        "text": "Bring reef-safe sunscreen and a waterproof bag"
       }
     ]
   }

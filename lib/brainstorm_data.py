@@ -12,6 +12,14 @@ def load_brainstorm_data():
 
 
 def save_brainstorm_data(data):
+    # remove duplicate 'id'
+    ids = set()
+    for item in data:
+        if item["id"] in ids:
+            data.remove(item)
+        else:
+            ids.add(item["id"])
+
     with open(BRAINSTORM_FILE, "w") as f:
         json.dump(data, f, indent=2)
 
