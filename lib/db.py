@@ -20,6 +20,7 @@ def update_app_data(key: str, object):
 
     st.session_state["AppUserData"][key] = object
     persist_app_data()
+    st.rerun()
 
 
 def persist_app_data():
@@ -29,6 +30,7 @@ def persist_app_data():
     user_data_table.put_item(
         Item={"user_id": user_id, "item_id": item_id, "data": data}
     )
+    st.toast("✅ Changes saved!")
 
 
 def init_app_data():

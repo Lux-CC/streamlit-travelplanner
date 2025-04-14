@@ -3,32 +3,44 @@ import streamlit as st
 from streamlit_cookies_controller import CookieController
 import config_vars
 
-controller = CookieController('pwd')
+controller = CookieController("pwd")
+
 
 def check_password():
     """Returns `True` if the user had the correct password."""
+
     def check_cookie():
-        controller.getAll() # might be redundant
+        controller.getAll()  # might be redundant
         if controller.get("PasswordHash") is None:
             pass
         else:
             # check if the cookie is valid
             encryption_key = st.secrets["encryption_key"]
             password = st.secrets["password"]
-            correct_value = hmac.new(encryption_key.encode(), password.encode(), digestmod="sha256").hexdigest()
+            correct_value = hmac.new(
+                encryption_key.encode(), password.encode(), digestmod="sha256"
+            ).hexdigest()
             if controller.get("PasswordHash") == correct_value:
                 st.session_state["password_correct"] = True
             else:
                 controller.delete("PasswordHash")
-        
+
     def password_entered():
         """Checks whether a password entered by the user is correct."""
         if hmac.compare_digest(st.session_state["password"], st.secrets["password"]):
             st.session_state["password_correct"] = True
+            st.session_state["initial_redirect"] = True
             encryption_key = st.secrets["encryption_key"]
-            encrypted_password = hmac.new(encryption_key.encode(), st.session_state["password"].encode(), digestmod="sha256").hexdigest()
-            controller.set("PasswordHash", encrypted_password, path='/', domain=config_vars.DOMAIN)
+            encrypted_password = hmac.new(
+                encryption_key.encode(),
+                st.session_state["password"].encode(),
+                digestmod="sha256",
+            ).hexdigest()
+            controller.set(
+                "PasswordHash", encrypted_password, path="/", domain=config_vars.DOMAIN
+            )
             del st.session_state["password"]  # Don't store the password.
+            # redirect user to different page
         else:
             st.session_state["password_correct"] = False
 
@@ -45,5 +57,3 @@ def check_password():
     if "password_correct" in st.session_state:
         st.error("😕 Password incorrect")
     return False
-
-

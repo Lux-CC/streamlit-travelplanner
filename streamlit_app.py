@@ -12,10 +12,15 @@ if not check_password():
 if "role" not in st.session_state:
     st.session_state.role = None
 
+
 # Retrieve the role from Session State to initialize the widget
 st.session_state._role = st.session_state.role
 
 homepage_menu()  # Render the dynamic homepage menu!
+
+if st.session_state.get("initial_redirect"):
+    st.session_state.initial_redirect = False
+    st.switch_page("pages/travel_brainstorm.py")
 
 # add a logout button
 if st.button("Logout"):

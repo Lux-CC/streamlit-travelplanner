@@ -8,7 +8,12 @@
     "category": "hiking",
     "metadata": {
       "score": 0.9,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1714746093211-b4691e7864d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxCYW5hdWUlMkMlMjBQaGlsaXBwaW5lc3xlbnwwfDB8fHwxNzQ0NjE4Mjc3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1714746093267-fdfe0999ca8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxCYW5hdWUlMkMlMjBQaGlsaXBwaW5lc3xlbnwwfDB8fHwxNzQ0NjE4Mjc3fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1714746093192-05f2f075568d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxCYW5hdWUlMkMlMjBQaGlsaXBwaW5lc3xlbnwwfDB8fHwxNzQ0NjE4Mjc3fDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -26,7 +31,12 @@
     "category": "culture",
     "metadata": {
       "score": 0.78,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1724657022201-626f6cf16ee3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxMdWFuZyUyMFByYWJhbmclMkMlMjBMYW9zfGVufDB8MHx8fDE3NDQ2MTgyNzh8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1709064155060-3268add15e39?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxMdWFuZyUyMFByYWJhbmclMkMlMjBMYW9zfGVufDB8MHx8fDE3NDQ2MTgyNzh8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1714253306311-4d2864fbd30c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxMdWFuZyUyMFByYWJhbmclMkMlMjBMYW9zfGVufDB8MHx8fDE3NDQ2MTgyNzh8MA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -44,7 +54,12 @@
     "category": "beach",
     "metadata": {
       "score": 0.88,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1576503895435-eb0730485d72?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxVbHV3YXR1JTJDJTIwQmFsaSUyQyUyMEluZG9uZXNpYXxlbnwwfDB8fHwxNzQ0NjE4Mjc5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1585823096440-9fdb837d48ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxVbHV3YXR1JTJDJTIwQmFsaSUyQyUyMEluZG9uZXNpYXxlbnwwfDB8fHwxNzQ0NjE4Mjc5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1572391358835-ee80418d4702?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxVbHV3YXR1JTJDJTIwQmFsaSUyQyUyMEluZG9uZXNpYXxlbnwwfDB8fHwxNzQ0NjE4Mjc5fDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -66,7 +81,12 @@
     "category": "hiking",
     "metadata": {
       "score": 0.92,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1520927640400-f9e83b1bc43e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxTYXBhJTJDJTIwVmlldG5hbXxlbnwwfDB8fHwxNzQ0NjE4MjgxfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1570366583862-f91883984fde?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxTYXBhJTJDJTIwVmlldG5hbXxlbnwwfDB8fHwxNzQ0NjE4MjgxfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1605189914441-47183c6fcd08?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxTYXBhJTJDJTIwVmlldG5hbXxlbnwwfDB8fHwxNzQ0NjE4MjgxfDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -88,7 +108,12 @@
     "category": "culture",
     "metadata": {
       "score": 0.7,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1519451241324-20b4ea2c4220?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxTYW50aWNob24lMkMlMjBQYWklMkMlMjBUaGFpbGFuZHxlbnwwfDB8fHwxNzQ0NjE4MjgyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1534008897995-27a23e859048?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxTYW50aWNob24lMkMlMjBQYWklMkMlMjBUaGFpbGFuZHxlbnwwfDB8fHwxNzQ0NjE4MjgyfDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1503933166348-a1a86c17b3a0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxTYW50aWNob24lMkMlMjBQYWklMkMlMjBUaGFpbGFuZHxlbnwwfDB8fHwxNzQ0NjE4MjgyfDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -106,7 +131,12 @@
     "category": "nature",
     "metadata": {
       "score": 0.93,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1548115184-bc6544d06a58?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxKZWp1JTIwSXNsYW5kJTJDJTIwU291dGglMjBLb3JlYXxlbnwwfDB8fHwxNzQ0NjE4Mjg0fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1502085671122-2d218cd434e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxKZWp1JTIwSXNsYW5kJTJDJTIwU291dGglMjBLb3JlYXxlbnwwfDB8fHwxNzQ0NjE4Mjg0fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1551010457-3cdd802dfa3c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxKZWp1JTIwSXNsYW5kJTJDJTIwU291dGglMjBLb3JlYXxlbnwwfDB8fHwxNzQ0NjE4Mjg0fDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -128,7 +158,12 @@
     "category": "temple",
     "metadata": {
       "score": 0.74,
-      "status": "skip"
+      "status": "skip",
+      "images": [
+        "https://images.unsplash.com/photo-1546361993-b49fa2e89cb0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxDaGlhbmclMjBSYWl8ZW58MHwwfHx8MTc0NDYyNDEzOXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1573822619717-605a97a3856c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxDaGlhbmclMjBSYWl8ZW58MHwwfHx8MTc0NDYyNDEzOXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1578335144141-069e13ef7890?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxDaGlhbmclMjBSYWl8ZW58MHwwfHx8MTc0NDYyNDEzOXww&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -146,7 +181,12 @@
     "category": "beach",
     "metadata": {
       "score": 0.78,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1605536888863-28bf1955a292?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxFbCUyME5pZG8lMkMlMjBQYWxhd2FuJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI4N3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1509850629763-f55dbe6a607e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxFbCUyME5pZG8lMkMlMjBQYWxhd2FuJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI4N3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1462557522227-30b31bfb0db9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxFbCUyME5pZG8lMkMlMjBQYWxhd2FuJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI4N3ww&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -176,7 +216,12 @@
     "category": "nature",
     "metadata": {
       "score": 0.85,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1565065526877-22bbef5dd560?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxMb3ZpbmElMkMlMjBCYWxpJTJDJTIwSW5kb25lc2lhfGVufDB8MHx8fDE3NDQ2MTgyODh8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1561009226-7a820d647a40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxMb3ZpbmElMkMlMjBCYWxpJTJDJTIwSW5kb25lc2lhfGVufDB8MHx8fDE3NDQ2MTgyODh8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1585643965050-da69dc20c5cf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxMb3ZpbmElMkMlMjBCYWxpJTJDJTIwSW5kb25lc2lhfGVufDB8MHx8fDE3NDQ2MTgyODh8MA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -198,7 +243,12 @@
     "category": "beach",
     "metadata": {
       "score": 0.9,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1720637902372-90a0b3b38bd9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxTaXF1aWpvciUyQyUyMFBoaWxpcHBpbmVzfGVufDB8MHx8fDE3NDQ2MTgyODl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1512476194448-341d7c86d1ea?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxTaXF1aWpvciUyQyUyMFBoaWxpcHBpbmVzfGVufDB8MHx8fDE3NDQ2MTgyODl8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1742867406390-bbcb81b3113f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxTaXF1aWpvciUyQyUyMFBoaWxpcHBpbmVzfGVufDB8MHx8fDE3NDQ2MTgyODl8MA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -220,7 +270,12 @@
     "category": "hiking",
     "metadata": {
       "score": 0.75,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1563280583-7c6d205d1188?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxCdWtpZG5vbiUyQyUyME1pbmRhbmFvJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI5MXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1509850629763-f55dbe6a607e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxCdWtpZG5vbiUyQyUyME1pbmRhbmFvJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI5MXww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1462557522227-30b31bfb0db9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxCdWtpZG5vbiUyQyUyME1pbmRhbmFvJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI5MXww&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -242,7 +297,12 @@
     "category": "culture",
     "metadata": {
       "score": 0.8,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1442544213729-6a15f1611937?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxSYW50ZXBhbyUyQyUyMFN1bGF3ZXNpJTJDJTIwSW5kb25lc2lhfGVufDB8MHx8fDE3NDQ2MTgyOTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxSYW50ZXBhbyUyQyUyMFN1bGF3ZXNpJTJDJTIwSW5kb25lc2lhfGVufDB8MHx8fDE3NDQ2MTgyOTJ8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1505993597083-3bd19fb75e57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxSYW50ZXBhbyUyQyUyMFN1bGF3ZXNpJTJDJTIwSW5kb25lc2lhfGVufDB8MHx8fDE3NDQ2MTgyOTJ8MA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -264,7 +324,12 @@
     "category": "nature",
     "metadata": {
       "score": 0.92,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1660280274563-767dd6b56374?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxLb21vZG8lMkMlMjBJbmRvbmVzaWF8ZW58MHwwfHx8MTc0NDYxODI5NHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1657788405193-c2039edaad6b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxLb21vZG8lMkMlMjBJbmRvbmVzaWF8ZW58MHwwfHx8MTc0NDYxODI5NHww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1715499937980-cc628f2cd45e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxLb21vZG8lMkMlMjBJbmRvbmVzaWF8ZW58MHwwfHx8MTc0NDYxODI5NHww&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -286,7 +351,12 @@
     "category": "nature",
     "metadata": {
       "score": 0.87,
-      "status": "maybe"
+      "status": "maybe",
+      "images": [
+        "https://images.unsplash.com/photo-1727512208038-fbdca2098796?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxCb2hvbCUyQyUyMFBoaWxpcHBpbmVzfGVufDB8MHx8fDE3NDQ2MTgyOTV8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1727512150683-39c660f7caac?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxCb2hvbCUyQyUyMFBoaWxpcHBpbmVzfGVufDB8MHx8fDE3NDQ2MTgyOTV8MA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1591506557489-e8ca407063e7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxCb2hvbCUyQyUyMFBoaWxpcHBpbmVzfGVufDB8MHx8fDE3NDQ2MTgyOTV8MA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -308,7 +378,12 @@
     "category": "nature",
     "metadata": {
       "score": 0.86,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1442544213729-6a15f1611937?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxCdWtpdCUyMExhd2FuZyUyQyUyMFN1bWF0cmElMkMlMjBJbmRvbmVzaWF8ZW58MHwwfHx8MTc0NDYxODI5N3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1513415756790-2ac1db1297d0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxCdWtpdCUyMExhd2FuZyUyQyUyMFN1bWF0cmElMkMlMjBJbmRvbmVzaWF8ZW58MHwwfHx8MTc0NDYxODI5N3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1505993597083-3bd19fb75e57?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxCdWtpdCUyMExhd2FuZyUyQyUyMFN1bWF0cmElMkMlMjBJbmRvbmVzaWF8ZW58MHwwfHx8MTc0NDYxODI5N3ww&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -330,7 +405,12 @@
     "category": "culture",
     "metadata": {
       "score": 0.8,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1646928229117-08e84cde1692?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxVYnVkJTJDJTIwQmFsaSUyQyUyMEluZG9uZXNpYXxlbnwwfDB8fHwxNzQ0NjE4Mjk4fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1698938577495-d9fbb3571931?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxVYnVkJTJDJTIwQmFsaSUyQyUyMEluZG9uZXNpYXxlbnwwfDB8fHwxNzQ0NjE4Mjk4fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1646928234724-ddfac30993e6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxVYnVkJTJDJTIwQmFsaSUyQyUyMEluZG9uZXNpYXxlbnwwfDB8fHwxNzQ0NjE4Mjk4fDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -352,7 +432,12 @@
     "category": "nature",
     "metadata": {
       "score": 0.88,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1714746093211-b4691e7864d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxCYW5hdWUlMkMlMjBJZnVnYW8lMkMlMjBQaGlsaXBwaW5lc3xlbnwwfDB8fHwxNzQ0NjE4Mjk5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1714746093267-fdfe0999ca8a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxCYW5hdWUlMkMlMjBJZnVnYW8lMkMlMjBQaGlsaXBwaW5lc3xlbnwwfDB8fHwxNzQ0NjE4Mjk5fDA&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1714746093192-05f2f075568d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxCYW5hdWUlMkMlMjBJZnVnYW8lMkMlMjBQaGlsaXBwaW5lc3xlbnwwfDB8fHwxNzQ0NjE4Mjk5fDA&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -378,7 +463,12 @@
     "category": "beach",
     "metadata": {
       "score": 0.93,
-      "status": "included"
+      "status": "included",
+      "images": [
+        "https://images.unsplash.com/photo-1605536888863-28bf1955a292?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwxfHxFbCUyME5pZG8lMkMlMjBQYWxhd2FuJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI4N3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1509850629763-f55dbe6a607e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwyfHxFbCUyME5pZG8lMkMlMjBQYWxhd2FuJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI4N3ww&ixlib=rb-4.0.3&q=80&w=1080",
+        "https://images.unsplash.com/photo-1462557522227-30b31bfb0db9?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Mzc2ODV8MHwxfHNlYXJjaHwzfHxFbCUyME5pZG8lMkMlMjBQYWxhd2FuJTJDJTIwUGhpbGlwcGluZXN8ZW58MHwwfHx8MTc0NDYxODI4N3ww&ixlib=rb-4.0.3&q=80&w=1080"
+      ]
     },
     "annotations": [
       {
@@ -391,7 +481,7 @@
       },
       {
         "id": "a3",
-        "text": "Bring reef-safe sunscreen and a waterproof bag"
+        "text": "Bring reef-safe sunscreen and a waterproof bag!"
       }
     ]
   }
