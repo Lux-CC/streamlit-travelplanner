@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from lib.brainstorm_data import load_brainstorm_data, save_brainstorm_data
+from lib.cache import time_function
 
 
 # === Load data and generate prompt ===
@@ -109,6 +110,7 @@ def batch_enrich_fragment():
                 st.rerun(scope="app")
 
 
+@time_function
 def maybe_show_batch_enrich_fragment():
     if st.session_state.get("enrich_step", 0) > 0:
         batch_enrich_fragment()

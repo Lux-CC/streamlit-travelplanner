@@ -5,7 +5,6 @@ from lib.db import update_app_data
 
 def load_brainstorm_data():
     data = json.loads(st.session_state.AppUserData.get("brainstorm_data", "[]"))
-    st.toast(f"✅ Loaded {len(data)} places from brainstorm data")
     return data
 
 

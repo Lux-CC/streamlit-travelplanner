@@ -1,6 +1,8 @@
 import streamlit as st
 import json
 from lib.brainstorm_data import save_brainstorm_data
+from lib.cache import time_function
+from lib.image_fetcher import fetch_unsplash_images
 
 
 def show_editable_item(item):
@@ -13,7 +15,7 @@ def show_editable_item(item):
             "Annotations (one per line)", default_text, height=200
         )
 
-        col1, col2 = st.columns([1, 1])
+        col1, col2, col3 = st.columns([1, 1, 1])
         with col1:
             if st.button("💾 Save"):
                 lines = [
@@ -28,6 +30,16 @@ def show_editable_item(item):
             if st.button("⚙️ Advanced Modify"):
                 st.session_state.advanced_edit = True
                 st.rerun()
+        with col3:
+            if st.button("🔄 Renew Images"):
+                try:
+                    query = item.get("image_query", "question mark")
+                    urls = fetch_unsplash_images(query)
+                    item.setdefault("metadata", {})["images"] = urls if urls else []
+                    st.toast(f"✅ Refreshed {len(urls)} images.")
+                    return item  # Re-save with new images
+                except Exception as e:
+                    st.error(f"Failed to fetch images: {e}")
 
     else:
         st.markdown("### ⚙️ Advanced JSON Editor")
@@ -52,6 +64,7 @@ def show_editable_item(item):
     return None
 
 
+@time_function
 def render_edit_panel(brainstorm_data, clicked_id):
     selected_id = clicked_id
     if selected_id:

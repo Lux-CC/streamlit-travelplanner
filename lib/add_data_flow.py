@@ -7,6 +7,7 @@ from lib.brainstorm_data import (
     load_brainstorm_data,
     save_brainstorm_data,
 )
+from lib.cache import time_function
 
 
 def get_prompt(existing_data, user_suggestions=None):
@@ -20,7 +21,6 @@ def get_prompt(existing_data, user_suggestions=None):
 You are helping plan a structured, flexible travel itinerary. Based on brainstormed ideas or suggestions, generate a list of compelling travel destinations in JSON format.
 
 You can skip {existing_places} as they are already included.
-{suggestion_note}
 
 Follow this strict schema per destination:
 
@@ -49,12 +49,16 @@ Follow this strict schema per destination:
     - `notes`: freeform context (e.g. "Monsoon season starts in April")
   - `images`: empty array if no URLs provided; copy any that exist
   - `dependencies`: optional list of IDs for places that should be visited before this one
+- **annotations**: a list of extra info or tips. The first entry must summarize the metadata in natural language. Contains
+  - id: annotation id
+  - text: text for the annotation
 
-- **annotations**: a list of extra info or tips. The first entry must summarize the metadata in natural language.
-
+The exact schema is {json.dumps(brainstorm_item_schema)}
 ✅ The `image_query` should be as specific and unambiguous as possible to return location-relevant results from Unsplash.  
 ⛔ Do not include vague or generic search terms like "beach" or "Thailand".  
 🎯 If the destination has a well-known landmark or district, include that in the query.
+
+{suggestion_note}
 
 Output must be a valid JSON array. Avoid nested explanation or markdown — just the JSON result.
 """
@@ -160,6 +164,7 @@ def _add_places_fragment():
                 st.rerun(scope="app")
 
 
+@time_function
 def maybe_show_add_places_fragment():
     if st.session_state.get("add_data_step", 0) > 0:
         left, center, right = st.columns([1, 2, 1])  # 2/4 = 50% width

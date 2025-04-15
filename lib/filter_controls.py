@@ -20,24 +20,29 @@ def show_filter_controls(data, default_filters):
             },
         )
 
-    with st.expander("🗂 Filter by status and country", expanded=True):
-        all_countries = sorted(set(item.get("country", "Unknown") for item in data))
+    all_countries = sorted(set(item.get("country", "Unknown") for item in data))
 
-        st.multiselect(
-            "Select which statuses to display:",
-            options=["included", "maybe", "skip"],
-            default=default_filters.get("statuses", ["included", "maybe"]),
-            key="selected_status_debug",
-            on_change=persist_filters,
-        )
+    # st.multiselect(
+    #     "Select which statuses to display:",
+    #     options=["included", "maybe", "skip"],
+    #     default=default_filters.get("statuses", ["included", "maybe"]),
+    #     key="selected_status_debug",
+    #     on_change=persist_filters,
+    # )
+    st.session_state.selected_status_debug = ["included", "maybe", "skip"]
 
-        st.multiselect(
-            "Select which countries to display:",
-            options=all_countries,
-            default=default_filters.get("countries", all_countries),
-            key="selected_countries_debug",
-            on_change=persist_filters,
-        )
+    # if default_filters have countries not in the all_countries, remove them
+    if default_filters.get("countries"):
+        default_filters["countries"] = [
+            c for c in default_filters["countries"] if c in all_countries
+        ]
+    st.multiselect(
+        "Select which countries to display:",
+        options=all_countries,
+        default=default_filters.get("countries", all_countries),
+        key="selected_countries_debug",
+        on_change=persist_filters,
+    )
 
     return (
         st.session_state.selected_status_debug,

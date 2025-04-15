@@ -20,7 +20,7 @@ def update_app_data(key: str, object):
 
     st.session_state["AppUserData"][key] = object
     persist_app_data()
-    st.rerun()
+    # st.rerun()
 
 
 def persist_app_data():

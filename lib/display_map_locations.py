@@ -3,7 +3,6 @@ from folium.plugins import MarkerCluster
 from lib.cache import time_function
 from lib.geo_resolver import resolve_geo_query
 import streamlit as st
-import textwrap
 
 
 @time_function
@@ -15,7 +14,23 @@ def render_brainstorm_locations(
     """
     Returns a folium map and debug logs with brainstorm locations rendered.
     """
-    map_view = folium.Map(location=[10, 110], zoom_start=4)
+    print("==========")
+    print("start debug locations")
+    print(
+        f"location: {st.session_state.get("center", {}).get("lat", 10)}, {st.session_state.get("center", {}).get("lng", 10)}",
+    )
+    print(f"zoom: {st.session_state.get("zoom", 4)}")
+    print(f"end debug locations")
+    map_view = folium.Map(
+        location=[
+            10,
+            100,
+        ],
+        zoom_start=4,
+        tiles="cartodb positron",
+        prefer_canvas=True,
+        disable_3d=True,
+    )
     resolved = []
     debug_logs = []
 
@@ -49,6 +64,7 @@ def render_brainstorm_locations(
             folium.GeoJson(
                 result["geojson"],
                 name=f"{country}-outline",
+                smooth_factor=10,
                 style_function=lambda feature: {
                     "fillColor": "#00000000",
                     "color": "#444444",
@@ -66,6 +82,9 @@ def render_brainstorm_locations(
             continue
 
         result, cache_hit = resolve_geo_query(item["geo_query"])
+        if not result:
+            st.toast(f"❌ No results found for query: {item["geo_query"]}")
+
         debug_logs.append(f"{'✅' if cache_hit else '🆕'} {item['geo_query']}")
 
         if result and "error" not in result:
@@ -112,11 +131,12 @@ def render_brainstorm_locations(
                     zoom_on_click=True,
                     marker=folium.CircleMarker(radius=4, fill=True, color="red"),
                     name=item["name"],
+                    smooth_factor=5,
                     style_function=lambda feature, fill=fill_color: {
                         "fillColor": fill,
                         "color": "black",
                         "weight": 1,
-                        "fillOpacity": 0.5,
+                        "fillOpacity": 0.3,
                     },
                 ).add_to(region_group)
 
