@@ -33,13 +33,6 @@ if "enrich_step" not in st.session_state:
     st.session_state.enrich_step = 0
 if not st.session_state.get("debug_logs_map"):
     st.session_state.debug_logs_map = ""
-if not st.session_state.get("center"):
-    st.session_state.center = {
-        "lat": 10,
-        "lng": 100,
-    }
-if not st.session_state.get("zoom"):
-    st.session_state.zoom = 3
 
 # === Map Toolkit Section ===
 st.sidebar.markdown("## 📍 Map Toolkit")
