@@ -7,3 +7,4 @@ langchain-community
 jsonschema
 folium==0.19.5
 streamlit-folium==0.24.1
+streamlit-float

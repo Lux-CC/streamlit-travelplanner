@@ -1,8 +1,17 @@
 import streamlit as st
 from streamlit_folium import st_folium
 import json
+from streamlit_float import float_init, float_css_helper, float_dialog
+
 
 st.set_page_config(layout="wide")
+float_init()
+
+# if not st.session_state.get("rerun_count"):
+#     st.session_state.rerun_count = 0
+
+# st.session_state.rerun_count += 1
+# st.toast(f"{datetime.datetime.now()} rerender {st.session_state.rerun_count}!")
 
 from lib.batch_edit_flow import maybe_show_batch_enrich_fragment
 from lib.cache import time_function
@@ -31,8 +40,6 @@ if "add_data_raw" not in st.session_state:
     st.session_state.add_data_raw = "[]"
 if "enrich_step" not in st.session_state:
     st.session_state.enrich_step = 0
-if not st.session_state.get("debug_logs_map"):
-    st.session_state.debug_logs_map = ""
 
 # === Map Toolkit Section ===
 st.sidebar.markdown("## 📍 Map Toolkit")
@@ -104,18 +111,13 @@ map_view = render_brainstorm_locations(
 # === Layout ===
 @time_function
 def render_map(map_view_obj):
-    st.session_state.debug_logs_map += f"""
-========
-before render zoom: {st.session_state.get("zoom")},
-before render center: {st.session_state.get("center")}
-    """
     map_output = st_folium(
         map_view_obj,
         use_container_width=True,
         height=600,
         zoom=st.session_state.get("map", {}).get("zoom", 4),
         center=st.session_state.get("map", {}).get("center"),
-        returned_objects=["last_object_clicked_tooltip", "center", "zoom"],
+        returned_objects=["last_object_clicked_tooltip"],
         key="map",
     )
 
@@ -125,16 +127,37 @@ before render center: {st.session_state.get("center")}
         st.session_state.selected_item = clicked_id
 
 
-col1, col2 = st.columns([2, 1])
+render_map(map_view_obj=map_view)
 
-# === Left Column: Map Rendering ===
-with col1:
-    render_map(map_view_obj=map_view)
+# === Floating right-hand sidebar ===
+if st.session_state.get("selected_item"):
+    dialog_container = st.container()
+    with dialog_container:
+        render_edit_panel(brainstorm_data, st.session_state.get("selected_item"))
+
+        float_css = float_css_helper(
+            width="20rem",
+            right="2rem",
+            top="5rem",
+            bottom="2rem",
+            background="#ffffff",
+            transition=4,
+            shadow=5,
+            css="padding: 1rem;",  # 👈 Add padding here
+        )
+        dialog_container.float(float_css)
 
 
-# === Right Column: Editing and Filters ===
-with col2:
-    render_edit_panel(brainstorm_data, st.session_state.get("selected_item"))
+# col1, col2 = st.columns([2, 1])
+
+# # === Left Column: Map Rendering ===
+# with col1:
+#     render_map(map_view_obj=map_view)
+
+
+# # === Right Column: Editing and Filters ===
+# with col2:
+#     render_edit_panel(brainstorm_data, st.session_state.get("selected_item"))
 
 
 if st.button("🔄 Fetch 5 new images!"):

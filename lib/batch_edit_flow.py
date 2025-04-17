@@ -2,6 +2,8 @@ import streamlit as st
 import json
 from lib.brainstorm_data import load_brainstorm_data, save_brainstorm_data
 from lib.cache import time_function
+from datetime import datetime
+import copy
 
 
 # === Load data and generate prompt ===
@@ -65,6 +67,33 @@ Return **only the enriched JSON array**, nothing else.
 """
 
 
+from datetime import datetime
+import copy
+
+
+def update_last_edited_if_changed(edited_entries, original_entries):
+    original_by_id = {e["id"]: e for e in original_entries if "id" in e}
+    updated = []
+
+    for entry in edited_entries:
+        entry_id = entry.get("id")
+        old_entry = original_by_id.get(entry_id)
+
+        # Deep copy & strip last_edited_timestamp for comparison
+        old_clean = copy.deepcopy(old_entry) if old_entry else {}
+        new_clean = copy.deepcopy(entry)
+
+        for e in [old_clean, new_clean]:
+            e.pop("last_edited_timestamp", None)
+
+        if old_clean != new_clean:
+            entry["last_edited_timestamp"] = datetime.now().isoformat()
+
+        updated.append(entry)
+
+    return updated
+
+
 @st.fragment
 def batch_enrich_fragment():
     data = load_brainstorm_data()
@@ -97,17 +126,22 @@ def batch_enrich_fragment():
         with col1:
             if st.button("💾 Save Edits", key="enrich_submit"):
                 try:
-                    st.session_state.brainstorm_data = json.loads(raw)
-                    save_brainstorm_data(st.session_state.brainstorm_data)
+                    edited_entries = json.loads(raw)
+                    if not isinstance(edited_entries, list):
+                        raise ValueError("Dataset must be a JSON array")
+
+                    updated_entries = update_last_edited_if_changed(
+                        edited_entries, st.session_state.brainstorm_data
+                    )
+
+                    st.session_state.brainstorm_data = updated_entries
+                    save_brainstorm_data(updated_entries)
                     st.success("✅ Dataset saved.")
                     st.session_state.enrich_step = 0
                     st.rerun(scope="app")
-                except json.JSONDecodeError as e:
+
+                except (json.JSONDecodeError, ValueError) as e:
                     st.error(f"❌ Invalid JSON: {e}")
-        with col2:
-            if st.button("Cancel", key="enrich_cancel"):
-                st.session_state.enrich_step = 0
-                st.rerun(scope="app")
 
 
 @time_function

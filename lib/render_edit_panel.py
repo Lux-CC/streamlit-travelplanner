@@ -3,6 +3,8 @@ import json
 from lib.brainstorm_data import save_brainstorm_data
 from lib.cache import time_function
 from lib.image_fetcher import fetch_unsplash_images
+from datetime import datetime
+from lib.add_to_itinerary import show_add_to_itinerary_dialog
 
 
 def show_editable_item(item):
@@ -24,6 +26,8 @@ def show_editable_item(item):
                 item["annotations"] = [
                     {"id": f"a{i+1}", "text": line} for i, line in enumerate(lines)
                 ]
+                item["last_edited_timestamp"] = datetime.now().isoformat()
+
                 return item
 
         with col2:
@@ -31,6 +35,8 @@ def show_editable_item(item):
                 st.session_state.advanced_edit = True
                 st.rerun()
         with col3:
+            if st.button("Add to ititnerary"):
+                show_add_to_itinerary_dialog(item)
             if st.button("🔄 Renew Images"):
                 try:
                     query = item.get("image_query", "question mark")
@@ -43,8 +49,9 @@ def show_editable_item(item):
 
     else:
         st.markdown("### ⚙️ Advanced JSON Editor")
+        raw_item = {k: v for k, v in item.items() if k != "last_edited_timestamp"}
         raw_json = st.text_area(
-            "Edit full JSON:", json.dumps(item, indent=2), height=300
+            "Edit full JSON:", json.dumps(raw_item, indent=2), height=300
         )
         col1, col2 = st.columns([1, 1])
         with col1:
@@ -52,6 +59,7 @@ def show_editable_item(item):
                 try:
                     updated = json.loads(raw_json)
                     st.session_state.advanced_edit = False
+                    updated["last_edited_timestamp"] = datetime.now().isoformat()
                     return updated
                 except json.JSONDecodeError as e:
                     st.error(f"Invalid JSON: {e}")

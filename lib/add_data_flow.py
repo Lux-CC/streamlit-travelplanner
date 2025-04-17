@@ -1,6 +1,7 @@
 import streamlit as st
 import json
 from jsonschema import validate, ValidationError
+from datetime import datetime
 
 from lib.brainstorm_data import (
     brainstorm_item_schema,
@@ -147,6 +148,7 @@ def _add_places_fragment():
 
                     for i, entry in enumerate(entries):
                         validate(instance=entry, schema=brainstorm_item_schema)
+                        entry["last_edited_timestamp"] = datetime.utcnow().isoformat()
 
                     st.session_state.brainstorm_data.extend(entries)
                     save_brainstorm_data(st.session_state.brainstorm_data)
@@ -156,8 +158,10 @@ def _add_places_fragment():
                     st.session_state.add_data_raw = "[]"
                     st.session_state.user_suggestions = ""
                     st.rerun()
+
                 except (json.JSONDecodeError, ValidationError, ValueError) as e:
                     st.error(f"❌ Validation failed: {e}")
+
         with col3:
             if st.button("Cancel", key="step3_cancel"):
                 st.session_state.add_data_step = 0

@@ -3,6 +3,71 @@ from folium.plugins import MarkerCluster
 from lib.cache import time_function
 from lib.geo_resolver import resolve_geo_query
 import streamlit as st
+from datetime import datetime, timedelta
+
+
+def is_recently_edited(timestamp_str, max_age_minutes=60):
+    """Returns True if the given ISO timestamp is within the last `max_age_minutes`."""
+    if not timestamp_str:
+        return False
+    try:
+        timestamp = datetime.fromisoformat(timestamp_str)
+        return datetime.utcnow() - timestamp < timedelta(minutes=max_age_minutes)
+    except ValueError:
+        return False
+
+
+def generate_popup_html(item):
+    meta = item.get("metadata", {})
+    seasonal = meta.get("seasonal_notes", {})
+
+    def fmt_months(months):
+        return ", ".join(months) if months else "n/a"
+
+    images = meta.get("images", [])[:2]
+    image_html = "".join(
+        f'<img src="{url}" style="max-width:100px; height:auto; margin-right:5px;">'
+        for url in images
+    )
+
+    activities = meta.get("activities", [])[:2]
+    activity_html = (
+        "<br>".join(
+            f"- {a['description']} ({a.get('season', 'n/a')})" for a in activities
+        )
+        or "n/a"
+    )
+
+    annotation = (
+        "<br>".join(a["text"] for a in item.get("annotations", [])) or "No description."
+    )
+
+    return f"""
+    <b>{item.get('name', 'Unknown Place')}</b><br><br>
+    {image_html}<br><br>
+    {annotation}<br><br>
+    <b>Stay:</b> ~{meta.get('typical_duration_days', '?')} days<br>
+    <b>Budget:</b> {meta.get('budget_level', 'unknown')}<br>
+    <b>Access:</b> {meta.get('access_notes', 'n/a')}<br>
+    <b>Best:</b> {fmt_months(seasonal.get('best_months'))} | 
+    <b>Avoid:</b> {fmt_months(seasonal.get('avoid_months'))}<br>
+    {seasonal.get('notes', '')}<br>
+    <b>Flexibility:</b> {meta.get('flexibility_rank', '?')}<br>
+    <b>Activities:</b><br>{activity_html}
+    """
+
+
+# image_urls = item.get("metadata", {}).get("images", [])[:2]
+#             image_html = "".join(
+#                 f'<img src="{url}" style="max-width:100px; height:auto; margin-right:5px;">'
+#                 for url in image_urls
+#             )
+
+#             popup_html = f"""
+#             <b>{item['name']}</b><br><br>
+#             {image_html}<br><br>
+#             {"<br>".join(a['text'] for a in item.get('annotations', []))}
+#             """
 
 
 @time_function
@@ -14,20 +79,13 @@ def render_brainstorm_locations(
     """
     Returns a folium map and debug logs with brainstorm locations rendered.
     """
-    print("==========")
-    print("start debug locations")
-    print(
-        f"location: {st.session_state.get("center", {}).get("lat", 10)}, {st.session_state.get("center", {}).get("lng", 10)}",
-    )
-    print(f"zoom: {st.session_state.get("zoom", 4)}")
-    print(f"end debug locations")
     map_view = folium.Map(
         location=[
             10,
             100,
         ],
         zoom_start=4,
-        tiles="cartodb positron",
+        tiles="CartoDB Voyager",
         prefer_canvas=True,
         disable_3d=True,
     )
@@ -95,17 +153,6 @@ def render_brainstorm_locations(
             )
             resolved.append(result)
 
-            image_urls = item.get("metadata", {}).get("images", [])[:2]
-            image_html = "".join(
-                f'<img src="{url}" style="max-width:100px; height:auto; margin-right:5px;">'
-                for url in image_urls
-            )
-
-            popup_html = f"""
-            <b>{item['name']}</b><br><br>
-            {image_html}<br><br>
-            {"<br>".join(a['text'] for a in item.get('annotations', []))}
-            """
             score = item.get("metadata", {}).get("score", 0)
             if score >= 0.9:
                 marker_color = "green"
@@ -140,18 +187,23 @@ def render_brainstorm_locations(
                     },
                 ).add_to(region_group)
 
+            highlight_recent = is_recently_edited(item.get("last_edited_timestamp"))
+            icon_color = "red" if highlight_recent else marker_color
+            icon_shape = (
+                "star"
+                if highlight_recent
+                else ("info-sign" if result.get("geojson") else "pushpin")
+            )
+
             folium.Marker(
                 [result["lat"], result["lon"]],
                 popup=folium.Popup(
-                    popup_html,
+                    generate_popup_html(item),
                     max_width=250,
                 ),
                 tooltip=item["id"],
-                icon=folium.Icon(
-                    color=marker_color,
-                    icon="info-sign" if result.get("geojson") else "pushpin",
-                ),
-            ).add_to(marker_cluster)
+                icon=folium.Icon(color=icon_color, icon=icon_shape, prefix="glyphicon"),
+            ).add_to(place_group if highlight_recent else marker_cluster)
 
     country_group.add_to(map_view)
     region_group.add_to(map_view)
