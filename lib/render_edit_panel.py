@@ -8,7 +8,7 @@ from lib.add_to_itinerary import show_add_to_itinerary_dialog
 
 
 def show_editable_item(item):
-    st.markdown(f"### ✏️ Editing: {item['name']}")
+    st.markdown(f"""#### ✏️ {item['name']}""")
     advanced = st.session_state.get("advanced_edit", False)
 
     if not advanced:
@@ -17,9 +17,9 @@ def show_editable_item(item):
             "Annotations (one per line)", default_text, height=200
         )
 
-        col1, col2, col3 = st.columns([1, 1, 1])
+        col1, col2 = st.columns([1, 1])
         with col1:
-            if st.button("💾 Save"):
+            if st.button("💾 Save changes", use_container_width=True):
                 lines = [
                     line.strip() for line in updated_text.split("\n") if line.strip()
                 ]
@@ -31,13 +31,13 @@ def show_editable_item(item):
                 return item
 
         with col2:
-            if st.button("⚙️ Advanced Modify"):
-                st.session_state.advanced_edit = True
-                st.rerun()
-        with col3:
-            if st.button("Add to ititnerary"):
+            if st.button("📌 Add to Your Itinerary", use_container_width=True):
                 show_add_to_itinerary_dialog(item)
-            if st.button("🔄 Renew Images"):
+
+        st.divider
+        _, col, _ = st.columns([1, 10, 1])  # hack around thingy
+        with col:
+            if st.button("🔄 Renew Images", use_container_width=True):
                 try:
                     query = item.get("image_query", "question mark")
                     urls = fetch_unsplash_images(query)
@@ -46,7 +46,9 @@ def show_editable_item(item):
                     return item  # Re-save with new images
                 except Exception as e:
                     st.error(f"Failed to fetch images: {e}")
-
+            if st.button("⚙️ Advanced Modify", use_container_width=True):
+                st.session_state.advanced_edit = True
+                st.rerun()
     else:
         st.markdown("### ⚙️ Advanced JSON Editor")
         raw_item = {k: v for k, v in item.items() if k != "last_edited_timestamp"}
@@ -73,6 +75,7 @@ def show_editable_item(item):
 
 
 @time_function
+@st.fragment
 def render_edit_panel(brainstorm_data, clicked_id):
     selected_id = clicked_id
     if selected_id:

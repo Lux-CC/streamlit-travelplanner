@@ -57,19 +57,6 @@ def generate_popup_html(item):
     """
 
 
-# image_urls = item.get("metadata", {}).get("images", [])[:2]
-#             image_html = "".join(
-#                 f'<img src="{url}" style="max-width:100px; height:auto; margin-right:5px;">'
-#                 for url in image_urls
-#             )
-
-#             popup_html = f"""
-#             <b>{item['name']}</b><br><br>
-#             {image_html}<br><br>
-#             {"<br>".join(a['text'] for a in item.get('annotations', []))}
-#             """
-
-
 @time_function
 def render_brainstorm_locations(
     brainstorm_data,
@@ -88,6 +75,7 @@ def render_brainstorm_locations(
         tiles="CartoDB Voyager",
         prefer_canvas=True,
         disable_3d=True,
+        zoom_control="bottomleft",
     )
     resolved = []
     debug_logs = []
@@ -210,6 +198,6 @@ def render_brainstorm_locations(
     marker_cluster.add_to(place_group)
     place_group.add_to(map_view)
     st.session_state.feature_group_to_add = place_group  # debug for dynamic maps
-    folium.LayerControl(collapsed=False).add_to(map_view)
+    folium.LayerControl(collapsed=False, position="topleft").add_to(map_view)
     st.session_state.debug_logs = st.session_state.get("debug_logs", []) + debug_logs
     return map_view

@@ -1,12 +1,21 @@
 import streamlit as st
 from streamlit_folium import st_folium
 import json
-from streamlit_float import float_init, float_css_helper, float_dialog
+from streamlit_float import float_init, float_css_helper
+
+from lib.itinerary_view import render_itinerary_overview
 
 
-st.set_page_config(layout="wide")
+st.set_page_config(
+    layout="wide",
+    initial_sidebar_state="collapsed",
+    menu_items={
+        "Get Help": "https://www.extremelycoolapp.com/help",
+        "Report a bug": "https://www.extremelycoolapp.com/bug",
+        "About": "# This is a header. This is an *extremely* cool app!",
+    },
+)
 float_init()
-
 # if not st.session_state.get("rerun_count"):
 #     st.session_state.rerun_count = 0
 
@@ -40,6 +49,8 @@ if "add_data_raw" not in st.session_state:
     st.session_state.add_data_raw = "[]"
 if "enrich_step" not in st.session_state:
     st.session_state.enrich_step = 0
+if "show_edit_panel" not in st.session_state:
+    st.session_state.show_edit_panel = True
 
 # === Map Toolkit Section ===
 st.sidebar.markdown("## 📍 Map Toolkit")
@@ -69,6 +80,9 @@ with st.sidebar.expander("Show advanced tools", expanded=False):
     if st.button("📝 Batch Edit"):
         st.session_state.enrich_step = 1
         st.rerun()
+
+    if st.button("🔄 Fetch 5 new images!"):
+        enrich_items_with_images(brainstorm_data)
 
     st.download_button(
         label="📤 Export Data",
@@ -124,28 +138,72 @@ def render_map(map_view_obj):
     # Track clicked item
     clicked_id = map_output.get("last_object_clicked_tooltip")
     if clicked_id and clicked_id != st.session_state.get("selected_item"):
+        st.session_state.show_edit_panel = True
         st.session_state.selected_item = clicked_id
 
 
 render_map(map_view_obj=map_view)
 
+
 # === Floating right-hand sidebar ===
 if st.session_state.get("selected_item"):
-    dialog_container = st.container()
-    with dialog_container:
-        render_edit_panel(brainstorm_data, st.session_state.get("selected_item"))
+
+    if st.session_state.get("show_edit_panel", True):
+        # === Expanded Panel ===
+        full_dialog = st.container()
+        with full_dialog:
+            col1, col2 = st.columns([0.05, 0.95], vertical_alignment="center")
+            with col1:
+                if st.button(
+                    "›", key="minimize_edit_panel", help="Minimize", type="tertiary"
+                ):
+                    st.session_state.show_edit_panel = False
+                    st.rerun()
+            with col2:
+                render_edit_panel(brainstorm_data, st.session_state["selected_item"])
 
         float_css = float_css_helper(
             width="20rem",
-            right="2rem",
-            top="5rem",
-            bottom="2rem",
+            right="0rem",
+            top="0rem",
+            bottom="0rem",
             background="#ffffff",
             transition=4,
             shadow=5,
-            css="padding: 1rem;",  # 👈 Add padding here
+            css="""
+                padding: 1rem;
+                border-radius: 0.5rem;
+            """,
         )
-        dialog_container.float(float_css)
+        full_dialog.float(float_css)
+
+    else:
+        # === Collapsed Sidebar Toggle ===
+        mini_dialog = st.container()
+        with mini_dialog:
+            _, col, _ = st.columns([0.01, 0.95, 0.01], vertical_alignment="center")
+            with col:
+                if st.button(
+                    "‹", key="expand_edit_panel", help="Open Sidebar", type="tertiary"
+                ):
+                    st.session_state.show_edit_panel = True
+                    st.rerun()
+
+        mini_css = float_css_helper(
+            width="3.5rem",  # small button-sized width
+            right="0rem",
+            top="0rem",
+            bottom="0rem",
+            background="#ffffff",
+            transition=4,
+            shadow=5,
+            css="""
+                padding: 0.5rem;
+                border-radius: 0.5rem;
+                text-align: center;
+            """,
+        )
+        mini_dialog.float(mini_css)
 
 
 # col1, col2 = st.columns([2, 1])
@@ -160,5 +218,5 @@ if st.session_state.get("selected_item"):
 #     render_edit_panel(brainstorm_data, st.session_state.get("selected_item"))
 
 
-if st.button("🔄 Fetch 5 new images!"):
-    enrich_items_with_images(brainstorm_data)
+with st.expander("Itinerary"):
+    render_itinerary_overview()
